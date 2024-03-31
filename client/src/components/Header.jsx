@@ -18,7 +18,7 @@ export const Header = () => {
           </Link>
 
           <Link to="/signin">
-            <li className="text-white">SignIn</li>
+            <li className="text-white">Sign In</li>
           </Link>
         </ul>
       </div>
