@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import userRouter from "../backend/routes/userRoutes.js";
 import userAuth from "../backend/routes/authRoutes.js";
 import { errorHandler } from "./utils/error.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ dotenv.config();
 //    console.log(err);
 // })
 
+
+
 mongoose.connect("mongodb://127.0.0.1:27017/mern-auth");
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -23,6 +26,7 @@ db.once("open", () => {
 });
 
 const app = express();
+app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/user", userRouter);
